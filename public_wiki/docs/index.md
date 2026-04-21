@@ -13,6 +13,7 @@
 
 ## 推荐入口
 
+- [LLM Wiki](llm-wiki/index.md)
 - [概念总图](learning/concept-map.md)
 - [核心术语表](terms/glossary.md)
 - [资料总览](sources/index.md)

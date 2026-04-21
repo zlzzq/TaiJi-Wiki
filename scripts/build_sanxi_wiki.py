@@ -9,11 +9,14 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+from llm_wiki_schema import is_private_page, parse_frontmatter, public_transform
+
 
 ROOT = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = ROOT / "output" / "knowledge"
 TEXT_DIR = KNOWLEDGE_DIR / "text"
 COMPILED_TOPICS_DIR = KNOWLEDGE_DIR / "compiled" / "topics"
+LLM_WIKI_SOURCE_DIR = KNOWLEDGE_DIR / "llm_wiki"
 PRIVATE_WIKI_DIR = ROOT / "wiki"
 PUBLIC_WIKI_DIR = ROOT / "public_wiki"
 PRIVATE_REPO_URL = "https://github.com/zlzzq/TaiJi"
@@ -110,7 +113,7 @@ def is_public_mode() -> bool:
 def reset_docs_dir() -> None:
     if DOCS_DIR.exists():
         shutil.rmtree(DOCS_DIR)
-    for subdir in ["assets", "corpus", "learning", "sources", "terms", "topics"]:
+    for subdir in ["assets", "corpus", "learning", "sources", "terms", "topics", "llm-wiki"]:
         (DOCS_DIR / subdir).mkdir(parents=True, exist_ok=True)
 
 
@@ -224,6 +227,31 @@ def write_topic_pages(topics: list[dict[str, str]]) -> None:
                     write_text(DOCS_DIR / "topics" / target_name, read_text(support_path))
 
 
+def write_llm_wiki_pages() -> bool:
+    if not LLM_WIKI_SOURCE_DIR.exists():
+        return False
+
+    target_root = DOCS_DIR / "llm-wiki"
+    if target_root.exists():
+        shutil.rmtree(target_root)
+    target_root.mkdir(parents=True, exist_ok=True)
+
+    wrote_any = False
+    for source_path in sorted(LLM_WIKI_SOURCE_DIR.rglob("*.md")):
+        relative = source_path.relative_to(LLM_WIKI_SOURCE_DIR)
+        content = read_text(source_path)
+        if "_templates" in relative.parts or relative.name in {"AGENTS.md", "README.md"}:
+            continue
+        if is_public_mode():
+            if is_private_page(content):
+                continue
+            content = public_transform(content)
+        target_path = target_root / relative
+        write_text(target_path, content)
+        wrote_any = True
+    return wrote_any
+
+
 def build_index_page(records: list[dict[str, Any]], topics: list[dict[str, str]]) -> str:
     total = len(records)
     ok_count = sum(1 for record in records if record["extraction_status"] == "ok")
@@ -265,6 +293,7 @@ def build_index_page(records: list[dict[str, Any]], topics: list[dict[str, str]]
 
 ## 推荐入口
 
+- [LLM Wiki](llm-wiki/index.md)
 - [概念总图](learning/concept-map.md)
 - [核心术语表](terms/glossary.md)
 - [资料总览](sources/index.md)
@@ -555,7 +584,54 @@ def nav_lines_for_topics(topics: list[dict[str, str]]) -> list[str]:
     return lines
 
 
-def write_mkdocs_config(records: list[dict[str, Any]], topics: list[dict[str, str]]) -> None:
+def nav_lines_for_llm_wiki(has_llm_wiki: bool) -> list[str]:
+    if not has_llm_wiki:
+        return []
+    root = DOCS_DIR / "llm-wiki"
+
+    def page_title(path: Path) -> str:
+        content = read_text(path)
+        meta = parse_frontmatter(content)
+        title = meta.get("title")
+        if isinstance(title, str) and title:
+            return title
+        for line in content.splitlines():
+            if line.startswith("# "):
+                return line[2:].strip()
+        return path.stem
+
+    def page_ref(path: Path) -> str:
+        return path.relative_to(DOCS_DIR).as_posix()
+
+    lines = ["  - LLM Wiki:"]
+    for title, rel in [("Index", "index.md"), ("Log", "log.md")]:
+        path = root / rel
+        if path.exists():
+            lines.append(f"    - {title}: {page_ref(path)}")
+
+    categories = [
+        ("sources", "Sources"),
+        ("topics", "Topics"),
+        ("concepts", "Concepts"),
+        ("terms", "Terms"),
+        ("maps", "Maps"),
+        ("contradictions", "Contradictions"),
+        ("queries", "Queries"),
+    ]
+    for dirname, title in categories:
+        directory = root / dirname
+        if not directory.exists():
+            continue
+        pages = sorted(directory.glob("*.md"), key=lambda path: (path.name != "index.md", path.name))
+        if not pages:
+            continue
+        lines.append(f"    - {title}:")
+        for page in pages:
+            lines.append(f"      - {yml_quote(page_title(page))}: {page_ref(page)}")
+    return lines
+
+
+def write_mkdocs_config(records: list[dict[str, Any]], topics: list[dict[str, str]], has_llm_wiki: bool) -> None:
     lines = [
         "site_name: 三晳资料 Wiki",
         f"site_description: {SITE_DESCRIPTION}",
@@ -615,6 +691,10 @@ def write_mkdocs_config(records: list[dict[str, Any]], topics: list[dict[str, st
         "",
         "nav:",
         "  - 首页: index.md",
+    ]
+    lines.extend(nav_lines_for_llm_wiki(has_llm_wiki))
+    lines.extend(
+        [
         "  - 学习:",
         "    - 概念总图: learning/concept-map.md",
         "    - 学习路径: learning/path.md",
@@ -626,7 +706,8 @@ def write_mkdocs_config(records: list[dict[str, Any]], topics: list[dict[str, st
         "  - 资料:",
         "    - 资料总览: sources/index.md",
         "    - 待补证资料: sources/pending.md",
-    ]
+        ]
+    )
     if topics:
         lines.extend(nav_lines_for_topics(topics))
     lines.extend(nav_lines_for_corpus(records))
@@ -638,6 +719,7 @@ def build_docs(records: list[dict[str, Any]]) -> None:
     topics = discover_compiled_topics()
     copy_static_pages()
     write_topic_pages(topics)
+    has_llm_wiki = write_llm_wiki_pages()
     write_assets()
     write_text(DOCS_DIR / "index.md", build_index_page(records, topics))
     write_text(DOCS_DIR / "sources" / "index.md", build_sources_page(records))
@@ -646,7 +728,7 @@ def build_docs(records: list[dict[str, Any]]) -> None:
     write_text(DOCS_DIR / "corpus" / "index.md", build_corpus_index_page(records))
     for record in records:
         write_text(DOCS_DIR / "corpus" / f"{record['wiki_slug']}.md", build_corpus_page(record))
-    write_mkdocs_config(records, topics)
+    write_mkdocs_config(records, topics, has_llm_wiki)
     write_requirements()
 
 
