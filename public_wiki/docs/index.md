@@ -20,6 +20,10 @@
 - [教学模板](learning/teaching-playbook.md)
 - [示例问答](learning/demo-qa.md)
 
+## 专题入口
+
+- [三晳九境](topics/sanxi-nine-realms.md)
+
 ## 模块分布
 
 | 模块 | 资料数 |

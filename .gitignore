@@ -7,6 +7,10 @@ __pycache__/
 # Browser automation local state.
 .playwright-cli/
 
+# Local Codex multi-agent task packs and logs.
+.codex/
+output/knowledge/compiled/**/agent_runs/**/*.log
+
 # Local MkDocs build output. GitHub Actions rebuilds this from source.
 wiki/site/
 public_wiki/site/

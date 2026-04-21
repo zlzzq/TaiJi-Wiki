@@ -13,6 +13,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = ROOT / "output" / "knowledge"
 TEXT_DIR = KNOWLEDGE_DIR / "text"
+COMPILED_TOPICS_DIR = KNOWLEDGE_DIR / "compiled" / "topics"
 PRIVATE_WIKI_DIR = ROOT / "wiki"
 PUBLIC_WIKI_DIR = ROOT / "public_wiki"
 PRIVATE_REPO_URL = "https://github.com/zlzzq/TaiJi"
@@ -35,6 +36,10 @@ STATIC_PAGES = {
     "learning/demo-qa.md": "demo_qa.md",
     "terms/glossary.md": "glossary.md",
     "terms/index.md": "term_index.md",
+}
+
+TOPIC_TITLES = {
+    "sanxi-nine-realms": "三晳九境",
 }
 
 
@@ -105,7 +110,7 @@ def is_public_mode() -> bool:
 def reset_docs_dir() -> None:
     if DOCS_DIR.exists():
         shutil.rmtree(DOCS_DIR)
-    for subdir in ["assets", "corpus", "learning", "sources", "terms"]:
+    for subdir in ["assets", "corpus", "learning", "sources", "terms", "topics"]:
         (DOCS_DIR / subdir).mkdir(parents=True, exist_ok=True)
 
 
@@ -173,7 +178,53 @@ def copy_static_pages() -> None:
         write_text(DOCS_DIR / target, content)
 
 
-def build_index_page(records: list[dict[str, Any]]) -> str:
+def discover_compiled_topics() -> list[dict[str, str]]:
+    if not COMPILED_TOPICS_DIR.exists():
+        return []
+
+    topics = []
+    source_name = "public_page.md" if is_public_mode() else "private_dossier.md"
+    for topic_dir in sorted(path for path in COMPILED_TOPICS_DIR.iterdir() if path.is_dir()):
+        source_path = topic_dir / source_name
+        if not source_path.exists():
+            continue
+        title = TOPIC_TITLES.get(topic_dir.name, topic_dir.name)
+        topics.append({"slug": topic_dir.name, "title": title, "source": source_name})
+    return topics
+
+
+def write_topic_pages(topics: list[dict[str, str]]) -> None:
+    if not topics:
+        write_text(
+            DOCS_DIR / "topics" / "index.md",
+            "# 专题\n\n当前还没有已编译专题。\n",
+        )
+        return
+
+    lines = ["# 专题", "", "本页汇总经过多轮编译的专题内容。", ""]
+    for topic in topics:
+        lines.append(f"- [{topic['title']}]({topic['slug']}.md)")
+    lines.append("")
+    write_text(DOCS_DIR / "topics" / "index.md", "\n".join(lines))
+
+    for topic in topics:
+        source_path = COMPILED_TOPICS_DIR / topic["slug"] / topic["source"]
+        write_text(DOCS_DIR / "topics" / f"{topic['slug']}.md", read_text(source_path))
+        if not is_public_mode():
+            support_pages = {
+                "teaching_lesson.md": f"{topic['slug']}-teaching-lesson.md",
+                "qa_drills.md": f"{topic['slug']}-qa-drills.md",
+                "concept_graph.md": f"{topic['slug']}-concept-graph.md",
+                "source_map.md": f"{topic['slug']}-source-map.md",
+                "review_report.md": f"{topic['slug']}-review-report.md",
+            }
+            for source_name, target_name in support_pages.items():
+                support_path = COMPILED_TOPICS_DIR / topic["slug"] / source_name
+                if support_path.exists():
+                    write_text(DOCS_DIR / "topics" / target_name, read_text(support_path))
+
+
+def build_index_page(records: list[dict[str, Any]], topics: list[dict[str, str]]) -> str:
     total = len(records)
     ok_count = sum(1 for record in records if record["extraction_status"] == "ok")
     pending_count = total - ok_count
@@ -192,6 +243,12 @@ def build_index_page(records: list[dict[str, Any]]) -> str:
     else:
         notice_title = "私有仓库全文版"
         notice_body = "本站包含抽取后的全文内容。默认使用场景是私有仓库或受控访问，不建议公开传播完整原文。"
+
+    topic_lines = ""
+    if topics:
+        topic_lines = "\n".join(f"- [{topic['title']}](topics/{topic['slug']}.md)" for topic in topics)
+    else:
+        topic_lines = "- 暂无。"
 
     return f"""# 三晳资料 Wiki
 
@@ -214,6 +271,10 @@ def build_index_page(records: list[dict[str, Any]]) -> str:
 - [待补证资料](sources/pending.md)
 - [教学模板](learning/teaching-playbook.md)
 - [示例问答](learning/demo-qa.md)
+
+## 专题入口
+
+{topic_lines}
 
 ## 模块分布
 
@@ -476,7 +537,25 @@ def nav_lines_for_corpus(records: list[dict[str, Any]]) -> list[str]:
     return lines
 
 
-def write_mkdocs_config(records: list[dict[str, Any]]) -> None:
+def nav_lines_for_topics(topics: list[dict[str, str]]) -> list[str]:
+    lines = ["  - 专题:", "    - 专题索引: topics/index.md"]
+    for topic in topics:
+        lines.append(f"    - {yml_quote(topic['title'])}: topics/{topic['slug']}.md")
+        if not is_public_mode():
+            support_nav = [
+                ("概念结构", f"{topic['slug']}-concept-graph.md"),
+                ("自问自答带学", f"{topic['slug']}-teaching-lesson.md"),
+                ("练习题", f"{topic['slug']}-qa-drills.md"),
+                ("来源图", f"{topic['slug']}-source-map.md"),
+                ("评审报告", f"{topic['slug']}-review-report.md"),
+            ]
+            for title, path in support_nav:
+                if (DOCS_DIR / "topics" / path).exists():
+                    lines.append(f"    - {yml_quote(topic['title'] + '：' + title)}: topics/{path}")
+    return lines
+
+
+def write_mkdocs_config(records: list[dict[str, Any]], topics: list[dict[str, str]]) -> None:
     lines = [
         "site_name: 三晳资料 Wiki",
         f"site_description: {SITE_DESCRIPTION}",
@@ -548,22 +627,26 @@ def write_mkdocs_config(records: list[dict[str, Any]]) -> None:
         "    - 资料总览: sources/index.md",
         "    - 待补证资料: sources/pending.md",
     ]
+    if topics:
+        lines.extend(nav_lines_for_topics(topics))
     lines.extend(nav_lines_for_corpus(records))
     write_text(WIKI_DIR / "mkdocs.yml", "\n".join(lines) + "\n")
 
 
 def build_docs(records: list[dict[str, Any]]) -> None:
     reset_docs_dir()
+    topics = discover_compiled_topics()
     copy_static_pages()
+    write_topic_pages(topics)
     write_assets()
-    write_text(DOCS_DIR / "index.md", build_index_page(records))
+    write_text(DOCS_DIR / "index.md", build_index_page(records, topics))
     write_text(DOCS_DIR / "sources" / "index.md", build_sources_page(records))
     write_text(DOCS_DIR / "sources" / "pending.md", build_pending_page(records))
     write_text(DOCS_DIR / "learning" / "path.md", build_learning_path_page(records))
     write_text(DOCS_DIR / "corpus" / "index.md", build_corpus_index_page(records))
     for record in records:
         write_text(DOCS_DIR / "corpus" / f"{record['wiki_slug']}.md", build_corpus_page(record))
-    write_mkdocs_config(records)
+    write_mkdocs_config(records, topics)
     write_requirements()
 
 

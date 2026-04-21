@@ -67,6 +67,9 @@ nav:
   - 资料:
     - 资料总览: sources/index.md
     - 待补证资料: sources/pending.md
+  - 专题:
+    - 专题索引: topics/index.md
+    - "三晳九境": topics/sanxi-nine-realms.md
   - 资料摘要:
     - 摘要索引: corpus/index.md
     - "模块 A：入门总纲":
