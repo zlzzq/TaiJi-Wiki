@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Browser automation local state.
+.playwright-cli/
+
+# Local MkDocs build output. GitHub Actions rebuilds this from source.
+wiki/site/
+public_wiki/site/
+
+# Do not accidentally commit manually downloaded external books/articles.
+output/external/lujinchuan/manual_inbox/books/*
+!output/external/lujinchuan/manual_inbox/books/README.md
+output/external/lujinchuan/manual_inbox/articles/*
+!output/external/lujinchuan/manual_inbox/articles/README.md
+
+# Root-level original source files are intentionally not committed in this Wiki+knowledge push.
+/*.doc
+/*.docx
+/*.pdf
+
+# Local virtual environments and editor files.
+.venv/
+venv/
+.idea/
+.vscode/

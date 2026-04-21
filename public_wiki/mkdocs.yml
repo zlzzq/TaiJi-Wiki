@@ -1,0 +1,144 @@
+site_name: 三晳资料 Wiki
+site_description: 三晳资料本地知识库生成的公开摘要 Wiki
+site_url: https://zlzzq.github.io/TaiJi-Wiki/
+repo_url: https://github.com/zlzzq/TaiJi-Wiki
+repo_name: zlzzq/TaiJi-Wiki
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: brown
+      accent: amber
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - glightbox
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css:
+  - assets/wiki.css
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+nav:
+  - 首页: index.md
+  - 学习:
+    - 概念总图: learning/concept-map.md
+    - 学习路径: learning/path.md
+    - 教学模板: learning/teaching-playbook.md
+    - 示例问答: learning/demo-qa.md
+  - 术语:
+    - 核心术语表: terms/glossary.md
+    - 术语索引: terms/index.md
+  - 资料:
+    - 资料总览: sources/index.md
+    - 待补证资料: sources/pending.md
+  - 资料摘要:
+    - 摘要索引: corpus/index.md
+    - "模块 A：入门总纲":
+      - "01三晳九问": corpus/001-01.md
+      - "10太极常识": corpus/010-10.md
+      - "43基础知识": corpus/045-43.md
+    - "模块 B：三晳结构":
+      - "04五阶七无": corpus/004-04.md
+      - "06三晳互义": corpus/006-06.md
+      - "11一体两应": corpus/011-11.md
+      - "12前后三晳": corpus/012-12.md
+    - "模块 C：三界与心性":
+      - "02一知三界": corpus/002-02.md
+      - "08客知本知": corpus/008-08.md
+      - "16心本无象": corpus/016-16.md
+      - "18道通三界": corpus/018-18.md
+    - "模块 D：理入与修证":
+      - "09问道证道": corpus/009-09.md
+      - "20周行不殆": corpus/021-20.md
+      - "28忘心入道": corpus/029-28.md
+      - "40意根入道": corpus/042-40.md
+      - "45涤除玄览": corpus/047-45.md
+    - "模块 E：答疑与破执":
+      - "20同学来信": corpus/020-20.md
+      - "21没感觉了": corpus/022-21.md
+      - "47分享智慧": corpus/049-47.md
+      - "50知者不问": corpus/052-50.md
+    - "模块 F：总讲与通盘串联":
+      - "33三晳讲论": corpus/034-33.md
+      - "36三晳讲义": corpus/037-36.md
+      - "36三晳讲义": corpus/038-36.md
+      - "41台版谈道": corpus/043-41.md
+      - "55讲义第二": corpus/057-55.md
+    - "待归类":
+      - "03一念落五": corpus/003-03.md
+      - "05三晳之学": corpus/005-05.md
+      - "07太极思维": corpus/007-07.md
+      - "13我是杯子": corpus/013-13.md
+      - "14生命兼并": corpus/014-14.md
+      - "15太极妙理": corpus/015-15.md
+      - "17本自具足": corpus/017-17.md
+      - "19本落相对": corpus/019-19.md
+      - "22我是上帝": corpus/023-22.md
+      - "23偶然必然": corpus/024-23.md
+      - "24道与自然": corpus/025-24.md
+      - "25憋着不生": corpus/026-25.md
+      - "26相信自己": corpus/027-26.md
+      - "27禅说金经": corpus/028-27.md
+      - "29因缘何处": corpus/030-29.md
+      - "30三灵无上": corpus/031-30.md
+      - "31智变神融": corpus/032-31.md
+      - "32面向未来": corpus/033-32.md
+      - "34心明慧明": corpus/035-34.md
+      - "35心外无物": corpus/036-35.md
+      - "37建立本来": corpus/039-37.md
+      - "38实相般若": corpus/040-38.md
+      - "39深度思考": corpus/041-39.md
+      - "42人见难逾": corpus/044-42.md
+      - "44困于六根": corpus/046-44.md
+      - "46觉明神通": corpus/048-46.md
+      - "48浅学深悟": corpus/050-48.md
+      - "49玄之又玄": corpus/051-49.md
+      - "51物我一体": corpus/053-51.md
+      - "52言说喻道": corpus/054-52.md
+      - "53绝学无为": corpus/055-53.md
+      - "54知乎太极": corpus/056-54.md
+      - "附1理入行入": corpus/058-appendix-1.md
+      - "附2前后三晳": corpus/059-appendix-2.md
+      - "附3一见立三": corpus/060-appendix-3.md
+      - "附4一体两应": corpus/061-appendix-4.md
+      - "附5客知本知": corpus/062-appendix-5.md
+      - "附6六根界定": corpus/063-appendix-6.md
+      - "附7界定存在": corpus/064-appendix-7.md
+      - "附8三识九根": corpus/065-appendix-8.md
+      - "附9性慧心明": corpus/066-appendix-9.md
