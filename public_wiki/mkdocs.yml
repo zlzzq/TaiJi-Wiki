@@ -130,65 +130,48 @@ nav:
     - Topics:
       - "Topic Pages": llm-wiki/topics/index.md
       - "常见误读": llm-wiki/topics/common-misreadings.md
-      - "前三晳与后三晳": llm-wiki/topics/front-back-sanxi.md
       - "知的系统": llm-wiki/topics/knowing-system.md
       - "理入与行入": llm-wiki/topics/li-ru-xing-ru.md
-      - "问道与证道": llm-wiki/topics/questioning-and-proof.md
+      - "三极三界": llm-wiki/topics/sanji-sanjie.md
       - "三晳互义": llm-wiki/topics/sanxi-mutual-meaning.md
       - "三晳九境": llm-wiki/topics/sanxi-nine-realms.md
       - "三晳总览": llm-wiki/topics/sanxi-overview.md
-      - "修行与自证": llm-wiki/topics/self-practice.md
-      - "太极思维": llm-wiki/topics/taiji-thinking.md
-      - "教学方法": llm-wiki/topics/teaching-method.md
-      - "三界": llm-wiki/topics/three-realms.md
+      - "生对变": llm-wiki/topics/sheng-dui-bian.md
+      - "自问自答带学": llm-wiki/topics/teaching-method.md
     - Concepts:
       - "Concept Pages": llm-wiki/concepts/index.md
       - "本知": llm-wiki/concepts/ben-zhi.md
-      - "对待 / 相待": llm-wiki/concepts/duidai.md
-      - "化生 / 生成": llm-wiki/concepts/huasheng.md
+      - "变": llm-wiki/concepts/bian.md
+      - "对": llm-wiki/concepts/dui.md
       - "客知": llm-wiki/concepts/ke-zhi.md
-      - "理入": llm-wiki/concepts/li-ru.md
-      - "流行 / 变化": llm-wiki/concepts/liuxing.md
       - "三晳": llm-wiki/concepts/sanxi.md
+      - "生": llm-wiki/concepts/sheng.md
       - "太极": llm-wiki/concepts/taiji.md
-      - "三界": llm-wiki/concepts/three-realms.md
-      - "悟": llm-wiki/concepts/wu.md
+      - "太极界": llm-wiki/concepts/taijijie.md
       - "无极": llm-wiki/concepts/wuji.md
-      - "行入": llm-wiki/concepts/xing-ru.md
+      - "无极界": llm-wiki/concepts/wujijie.md
       - "性知": llm-wiki/concepts/xing-zhi.md
-      - "证": llm-wiki/concepts/zheng.md
-      - "一体两应": llm-wiki/concepts/一体两应.md
-      - "人见 / 圣见 / 道见": llm-wiki/concepts/人见.md
-      - "使用原则": llm-wiki/concepts/使用原则.md
-      - "前后三晳": llm-wiki/concepts/前后三晳.md
-      - "心": llm-wiki/concepts/心.md
-      - "性": llm-wiki/concepts/性.md
-      - "灵": llm-wiki/concepts/灵.md
+      - "有极": llm-wiki/concepts/youji.md
+      - "有极界": llm-wiki/concepts/youjijie.md
     - Terms:
       - "Aliases": llm-wiki/terms/aliases.md
       - "Glossary": llm-wiki/terms/glossary.md
       - "Term Conflicts": llm-wiki/terms/term-conflicts.md
     - Maps:
       - "Maps": llm-wiki/maps/index.md
-      - "Concept Map": llm-wiki/maps/concept-map.md
-      - "Dependency Map": llm-wiki/maps/dependency-map.md
       - "Learning Path": llm-wiki/maps/learning-path.md
-      - "Source Topic Matrix": llm-wiki/maps/source-topic-matrix.md
+      - "Root Doctrine": llm-wiki/maps/root-doctrine.md
     - Contradictions:
       - "Contradictions": llm-wiki/contradictions/index.md
-      - "生成 / 化生 / 化生规 的口径差异": llm-wiki/contradictions/generation-huasheng.md
-      - "客知 / 本知 / 性知 的层次差异": llm-wiki/contradictions/knowing-layers.md
-      - "流行 / 变化 / 流易 的口径差异": llm-wiki/contradictions/liuxing-bianhua.md
-      - "化生对待流行 / 生成对待变化 的讲法差异": llm-wiki/contradictions/sanxi-terms.md
-      - "无生 / 无对 / 无变 不是简单否定": llm-wiki/contradictions/wu-is-not-negation.md
+      - "变化 / 流行 的口径差异": llm-wiki/contradictions/bianhua-liuxing.md
+      - "生成 / 化生 的口径差异": llm-wiki/contradictions/generation-huasheng.md
+      - "知 / 悟 的口径差异": llm-wiki/contradictions/knowing-and-awakening.md
     - Queries:
       - "Query Pages": llm-wiki/queries/index.md
       - "Q: 本知与客知怎么分？": llm-wiki/queries/benzhi-and-kezhi.md
-      - "Q: 前三晳和后三晳怎么理解？": llm-wiki/queries/front-and-back-sanxi.md
       - "Q: 理入和行入是什么关系？": llm-wiki/queries/li-ru-and-xing-ru.md
       - "Q: 怎样用三晳转变思维，而不是背概念？": llm-wiki/queries/use-sanxi-not-memorize.md
       - "Q: 三晳到底解决什么问题？": llm-wiki/queries/what-is-sanxi-solving.md
-      - "Q: 为什么“知道一点”最容易学执？": llm-wiki/queries/why-knowing-a-little-is-risky.md
       - "Q: 三晳九境为什么不是九个固定境界？": llm-wiki/queries/why-nine-realms-not-fixed.md
   - 学习:
     - 概念总图: learning/concept-map.md

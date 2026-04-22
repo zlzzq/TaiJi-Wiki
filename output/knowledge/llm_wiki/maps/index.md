@@ -1,9 +1,9 @@
 ---
 title: Maps
 type: index
-status: compiled-v2
+status: compiled-v3
 visibility: public
-source_count: 4
+source_count: 2
 last_compiled: 2026-04-22
 tags:
   - maps
@@ -15,7 +15,5 @@ related:
 
 ## Start Here
 
-- [Source Topic Matrix](source-topic-matrix.md)
+- [Root Doctrine](root-doctrine.md)
 - [Learning Path](learning-path.md)
-- [Dependency Map](dependency-map.md)
-- [Concept Map](concept-map.md)

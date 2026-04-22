@@ -1,9 +1,9 @@
 ---
 title: Concept Pages
 type: index
-status: compiled-v2
+status: compiled-v3
 visibility: public
-source_count: 21
+source_count: 13
 last_compiled: 2026-04-22
 tags:
   - concepts
@@ -15,24 +15,16 @@ related:
 
 ## Start Here
 
-- [使用原则](使用原则.md)
 - [三晳](sanxi.md)
-- [三界](three-realms.md)
-- [化生 / 生成](huasheng.md)
-- [对待 / 相待](duidai.md)
-- [流行 / 变化](liuxing.md)
-- [客知](ke-zhi.md)
-- [本知](ben-zhi.md)
-- [性知](xing-zhi.md)
-- [心](心.md)
-- [性](性.md)
-- [灵](灵.md)
-- [理入](li-ru.md)
-- [行入](xing-ru.md)
-- [悟](wu.md)
-- [证](zheng.md)
-- [太极](taiji.md)
+- [生](sheng.md)
+- [对](dui.md)
+- [变](bian.md)
 - [无极](wuji.md)
-- [一体两应](一体两应.md)
-- [前后三晳](前后三晳.md)
-- [人见 / 圣见 / 道见](人见.md)
+- [太极](taiji.md)
+- [有极](youji.md)
+- [无极界](wujijie.md)
+- [太极界](taijijie.md)
+- [有极界](youjijie.md)
+- [本知](ben-zhi.md)
+- [客知](ke-zhi.md)
+- [性知](xing-zhi.md)

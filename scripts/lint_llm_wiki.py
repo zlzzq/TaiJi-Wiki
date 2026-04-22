@@ -6,6 +6,7 @@ from pathlib import Path
 
 from llm_wiki_quality import detect_ocr_artifacts, score_page
 from llm_wiki_schema import iter_markdown_files, parse_frontmatter, public_transform, validate_page
+from llm_wiki_spirit_schema import score_v3_page
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -51,15 +52,15 @@ def lint_public_artifacts(path: Path, *, public: bool) -> list[str]:
     return problems
 
 
-def lint_quality(path: Path) -> list[str]:
+def lint_quality(path: Path, quality: str = "v2") -> list[str]:
     meta = parse_frontmatter(path.read_text(encoding="utf-8", errors="ignore"))
     if meta.get("type") in {"rule", "log", "index", "map", "term"}:
         return []
-    report = score_page(path)
+    report = score_v3_page(path) if quality == "v3" else score_page(path)
     return [f"quality: {problem}" for problem in report["problems"]]
 
 
-def lint_tree(root: Path, *, public: bool = False, quality: bool = False) -> int:
+def lint_tree(root: Path, *, public: bool = False, quality: str = "") -> int:
     if not root.exists():
         print(f"Missing target: {root}")
         return 1
@@ -74,7 +75,7 @@ def lint_tree(root: Path, *, public: bool = False, quality: bool = False) -> int
         problems.extend(lint_quote_lengths(path, public=public))
         problems.extend(lint_public_artifacts(path, public=public))
         if quality:
-            problems.extend(lint_quality(path))
+            problems.extend(lint_quality(path, quality))
         if problems:
             failures += 1
             rel = path.relative_to(root)
@@ -93,7 +94,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Lint Sanxi LLM Wiki markdown pages.")
     parser.add_argument("--target", required=True)
     parser.add_argument("--public", action="store_true")
-    parser.add_argument("--quality", action="store_true")
+    parser.add_argument("--quality", nargs="?", const="v2", choices=["v2", "v3"], default="")
     args = parser.parse_args()
     raise SystemExit(lint_tree((ROOT / args.target).resolve() if not Path(args.target).is_absolute() else Path(args.target), public=args.public, quality=args.quality))
 
