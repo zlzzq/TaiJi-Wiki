@@ -165,15 +165,15 @@ nav:
       - "性": llm-wiki/concepts/性.md
       - "灵": llm-wiki/concepts/灵.md
     - Terms:
-      - "术语别名表": llm-wiki/terms/aliases.md
-      - "核心术语表": llm-wiki/terms/glossary.md
-      - "术语冲突与口径差异": llm-wiki/terms/term-conflicts.md
+      - "Aliases": llm-wiki/terms/aliases.md
+      - "Glossary": llm-wiki/terms/glossary.md
+      - "Term Conflicts": llm-wiki/terms/term-conflicts.md
     - Maps:
-      - "LLM Wiki Maps": llm-wiki/maps/index.md
-      - "概念图": llm-wiki/maps/concept-map.md
-      - "依赖图": llm-wiki/maps/dependency-map.md
-      - "学习路径": llm-wiki/maps/learning-path.md
-      - "来源专题矩阵": llm-wiki/maps/source-topic-matrix.md
+      - "Maps": llm-wiki/maps/index.md
+      - "Concept Map": llm-wiki/maps/concept-map.md
+      - "Dependency Map": llm-wiki/maps/dependency-map.md
+      - "Learning Path": llm-wiki/maps/learning-path.md
+      - "Source Topic Matrix": llm-wiki/maps/source-topic-matrix.md
     - Contradictions:
       - "Contradictions": llm-wiki/contradictions/index.md
       - "生成 / 化生 / 化生规 的口径差异": llm-wiki/contradictions/generation-huasheng.md
@@ -186,7 +186,9 @@ nav:
       - "Q: 本知与客知怎么分？": llm-wiki/queries/benzhi-and-kezhi.md
       - "Q: 前三晳和后三晳怎么理解？": llm-wiki/queries/front-and-back-sanxi.md
       - "Q: 理入和行入是什么关系？": llm-wiki/queries/li-ru-and-xing-ru.md
+      - "Q: 怎样用三晳转变思维，而不是背概念？": llm-wiki/queries/use-sanxi-not-memorize.md
       - "Q: 三晳到底解决什么问题？": llm-wiki/queries/what-is-sanxi-solving.md
+      - "Q: 为什么“知道一点”最容易学执？": llm-wiki/queries/why-knowing-a-little-is-risky.md
       - "Q: 三晳九境为什么不是九个固定境界？": llm-wiki/queries/why-nine-realms-not-fixed.md
   - 学习:
     - 概念总图: learning/concept-map.md

@@ -1,14 +1,14 @@
 ---
 title: Contradictions
 type: index
-status: compiled
+status: compiled-v2
 visibility: public
 source_count: 5
-last_compiled: 2026-04-21
+last_compiled: 2026-04-22
 tags:
   - contradictions
 related:
-  - 三晳 LLM Wiki Index
+  - 常见误读
 ---
 
 # Contradictions

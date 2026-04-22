@@ -1,23 +1,21 @@
 ---
-title: LLM Wiki Maps
-type: map
-status: compiled
+title: Maps
+type: index
+status: compiled-v2
 visibility: public
-source_count: 66
-last_compiled: 2026-04-21
+source_count: 4
+last_compiled: 2026-04-22
 tags:
   - maps
 related:
-  - 三晳 LLM Wiki Index
+  - 三晳总览
 ---
 
-# LLM Wiki Maps
+# Maps
 
-## Summary
+## Start Here
 
-本区汇总来源、专题、概念和学习路径之间的关系。
-
-- [概念图](concept-map.md)
-- [来源专题矩阵](source-topic-matrix.md)
-- [依赖图](dependency-map.md)
-- [学习路径](learning-path.md)
+- [Source Topic Matrix](source-topic-matrix.md)
+- [Learning Path](learning-path.md)
+- [Dependency Map](dependency-map.md)
+- [Concept Map](concept-map.md)

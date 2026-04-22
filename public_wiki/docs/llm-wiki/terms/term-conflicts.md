@@ -1,22 +1,21 @@
 ---
-title: 术语冲突与口径差异
+title: Term Conflicts
 type: term
-status: compiled
+status: compiled-v2
 visibility: public
-source_count: 0
-last_compiled: 2026-04-21
+source_count: 5
+last_compiled: 2026-04-22
 tags:
-  - 术语
-  - 冲突
+  - term-conflicts
 related:
-  - 术语别名表
+  - Contradictions
 ---
 
-# 术语冲突与口径差异
+# Term Conflicts
 
 ## Summary
 
-三晳资料中的术语差异多半来自讲法阶段、教学对象和哲理/实证层次不同，不应强行抹平。
+术语冲突不先裁判对错，而先记录各自使用场景。
 
 - [生成 / 化生 / 化生规 的口径差异](../contradictions/generation-huasheng.md)
 - [流行 / 变化 / 流易 的口径差异](../contradictions/liuxing-bianhua.md)

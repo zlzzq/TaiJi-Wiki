@@ -1,19 +1,16 @@
 ---
 title: 附6六根界定
 type: source
-status: compiled
+status: compiled-v2
 visibility: public
 source_count: 1
-last_compiled: 2026-04-21
+last_compiled: 2026-04-22
 tags:
   - 悟
   - 三晳
   - 一体两应
   - 证
   - 三界
-  - 太极
-  - 心
-  - 对待
 related:
   - 三晳总览
   - 问道与证道
@@ -26,7 +23,11 @@ related:
 
 ## Summary
 
-他没有直接说什么是悟道
+读《附6六根界定》时，先抓住它围绕“悟”给出的入口，再分辨它是在立结构、破误读，还是把理路导向练习。 本页 v2 编译重点是把材料转成可复述、可反问、可练习的学习入口，而不是替代原文。
+
+## Core Problem
+
+本文在“待归类”中处理“悟”如何被理解和使用的问题：它不是要求先背定义，而是把学习者带回具体问题、材料语境和自身反问。
 
 ## Source Metadata
 
@@ -37,12 +38,22 @@ related:
 | 原模块 | 待归类 |
 | 抽取状态 | ok |
 | 正文字数 | 13097 |
+| v2 编译状态 | agent/profile merged |
+
+## Structure Outline
+
+- 起点：从“什么是“悟”？”进入，不先堆术语。
+- 展开：把 悟, 三晳, 一体两应 放回“待归类”的位置。
+- 翻转：检查自己是否把一句话当成固定答案。
+- 收束：用一个复述、一个反问、一个具体例子把理解落回自己身上。
 
 ## Key Claims
 
-- 他没有直接说什么是悟道
-- 可见，三晳是破执去见的利器
-- 你看到的是自己，而不是三晳
+| 主张 | 证据锚点 | 解释 | 置信度 |
+| --- | --- | --- | --- |
+| 本文首先提示，理解“悟”要回到问题本身，而不是停在名词解释。 | theme_excerpt[1]： “他没有直接说什么是悟道” | 这条摘句为“悟”提供入口，但 v2 只把它当证据锚点；真正阅读时要回到全文语境。 | medium |
+| 本文进一步把“悟”放入“待归类”的结构位置，帮助学习者知道它服务哪一段学习。 | theme_excerpt[2]： “可见，三晳是破执去见的利器” | 这条摘句为“悟”提供入口，但 v2 只把它当证据锚点；真正阅读时要回到全文语境。 | medium |
+| 本文最后提醒，真正的理解要能反问自己的说法，避免把材料中的一句话立成死见。 | theme_excerpt[3]： “你看到的是自己，而不是三晳” | 这条摘句为“悟”提供入口，但 v2 只把它当证据锚点；真正阅读时要回到全文语境。 | medium |
 
 ## Concepts Introduced
 
@@ -51,30 +62,32 @@ related:
 - [一体两应](../concepts/一体两应.md)
 - [证](../concepts/zheng.md)
 - [三界](../concepts/three-realms.md)
-- [太极](../concepts/taiji.md)
-- [心](../concepts/心.md)
-- 对待
 
 
 ## Evidence Anchors
 
 | ID | 定位 | 公开短摘句 |
 | --- | --- | --- |
-| 063-appendix-6:T01 | theme_excerpt[1] | “他没有直接说什么是悟道” |
-| 063-appendix-6:T02 | theme_excerpt[2] | “可见，三晳是破执去见的利器” |
-| 063-appendix-6:T03 | theme_excerpt[3] | “你看到的是自己，而不是三晳” |
-| 063-appendix-6:W01 | warning_excerpt[1] | “可见，三晳是破执去见的利器” |
-| 063-appendix-6:W02 | warning_excerpt[2] | “怎样解决这个矛盾？参悟三晳，破执去见。这是惟一的法，别无他路” |
+| 063-appendix-6:Q01 | excerpt[1] | “他没有直接说什么是悟道” |
+| 063-appendix-6:Q02 | excerpt[2] | “可见，三晳是破执去见的利器” |
+| 063-appendix-6:Q03 | excerpt[3] | “你看到的是自己，而不是三晳” |
+| 063-appendix-6:Q04 | excerpt[4] | “可见，三晳是破执去见的利器” |
+| 063-appendix-6:Q05 | excerpt[5] | “怎样解决这个矛盾？参悟三晳，破执去见。这是惟一的法，别无他路” |
 
 ## Teaching Use
 
-本文适合用于 `待归类` 的学习路径中，重点回答：什么是“悟”？；什么是“三晳”？；什么是“一体两应”？
+- 适合放在“待归类”中做带学材料。
+- 先复述本文问题，再用一条材料证据说明为什么这样理解。
 
 ## Common Misreadings
 
 - 可见，三晳是破执去见的利器
 - 怎样解决这个矛盾？参悟三晳，破执去见。这是惟一的法，别无他路
-- 所以，说自己悟了的人很多，至于怎么判断，太极的标准是没有三执五著
+
+## Practice Questions
+
+- 什么是“悟”？
+- 什么是“三晳”？
 
 ## Related Topics
 
@@ -91,6 +104,3 @@ related:
 - [一体两应](../concepts/一体两应.md)
 - [证](../concepts/zheng.md)
 - [三界](../concepts/three-realms.md)
-- [太极](../concepts/taiji.md)
-- [心](../concepts/心.md)
-- 对待

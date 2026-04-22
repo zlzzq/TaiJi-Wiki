@@ -13,7 +13,9 @@
 
 ## 推荐入口
 
-- [LLM Wiki](llm-wiki/index.md)
+- [LLM Wiki 深编译入口](llm-wiki/index.md)
+- [推荐学习路径](llm-wiki/maps/learning-path.md)
+- [三晳到底解决什么问题？](llm-wiki/queries/what-is-sanxi-solving.md)
 - [概念总图](learning/concept-map.md)
 - [核心术语表](terms/glossary.md)
 - [资料总览](sources/index.md)
@@ -39,10 +41,10 @@
 
 ## 建议阅读顺序
 
-1. 先看 [核心术语表](terms/glossary.md) 和 [概念总图](learning/concept-map.md)，建立地图。
-2. 再看 [资料总览](sources/index.md)，按模块进入单篇资料。
-3. 需要查具体术语时，使用 [术语索引](terms/index.md) 或站内搜索。
-4. 学习表达和答问时，看 [教学模板](learning/teaching-playbook.md) 与 [示例问答](learning/demo-qa.md)。
+1. 先看 [LLM Wiki 深编译入口](llm-wiki/index.md)，按问题进入，不先背术语。
+2. 再看 [推荐学习路径](llm-wiki/maps/learning-path.md)，按起手、结构、翻转、收束推进。
+3. 遇到术语时，进入 [Concept Pages](llm-wiki/concepts/index.md) 和 [Term Conflicts](llm-wiki/terms/term-conflicts.md)。
+4. 练习表达时，看 [Query Pages](llm-wiki/queries/index.md)，用自问自答方式复述、改写、反问。
 
 ## 编译边界
 

@@ -1,26 +1,21 @@
 ---
-title: 核心术语表
+title: Glossary
 type: term
-status: compiled
+status: compiled-v2
 visibility: public
 source_count: 21
-last_compiled: 2026-04-21
+last_compiled: 2026-04-22
 tags:
   - 术语
 related:
-  - 术语别名
-  - 术语冲突
+  - 三晳总览
 ---
 
-# 核心术语表
+# Glossary
 
 ## Summary
 
-本页从现有人工术语表编译而来，用于统一公开查询和教学口径。
-
-# 三晳核心术语表
-
-说明：本文件是基于当前资料库整理出来的“工作口径”。它的作用，不是替代原文，而是把分散在讲义、谈道录、问答、附录里的关键概念，先整理成一套能用于教学和检索的共同语言。
+本页汇总核心术语，v2 的重点不是给死定义，而是提示术语的使用层次和误读风险。
 
 ## 使用原则
 
